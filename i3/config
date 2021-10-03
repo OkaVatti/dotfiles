@@ -1,0 +1,214 @@
+#   @@@@@@@   @@@@@@  @@@@@@@  @@@  @@@ @@@@@@@@ @@@@@@@  @@@  @@@@@@ 
+#   @@!  @@@ @@!  @@@ @@!  @@@ @@!  !@@ @@!      @@!  @@@ !@  !@@     
+#   @!@@!@!  @!@!@!@! @!@!!@!  @!@@!@!  @!!!:!   @!@!!@!       !@@!!  
+#   !!:      !!:  !!! !!: :!!  !!: :!!  !!:      !!: :!!          !:! 
+#    :        :   : :  :   : :  :   ::: : :: ::   :   : :     ::.: :  
+#
+#   @@@ @@@@@@            @@@@@@@   @@@@@@  @@@@@@@   @@@@@@ 
+#   @@!     @@!          !@@       @@!  @@@ @@!  @@@ !@@     
+#   !!@  @!!!:  @!@!@!@! !@! @!@!@ @!@!@!@! @!@@!@!   !@@!!  
+#   !!:     !!:          :!!   !!: !!:  !!! !!:          !:! 
+#   :   ::: ::            :: :: :   :   : :  :       ::.: :  
+#
+#    @@@@@@@  @@@@@@  @@@  @@@ @@@@@@@@ @@@  @@@@@@@  
+#   !@@      @@!  @@@ @@!@!@@@ @@!      @@! !@@       
+#   !@!      @!@  !@! @!@@!!@! @!!!:!   !!@ !@! @!@!@ 
+#   :!!      !!:  !!! !!:  !!! !!:      !!: :!!   !!: 
+#    :: :: :  : :. :  ::    :   :       :    :: :: :  
+
+
+
+# .-. .-. .-. .-. .-. . .   .-. . . .-.   .-. .-. .-. . . .-. 
+# `-. |   |(  |-  |-  |\|   |-| |\| |  )  |-  | | |   | | `-. 
+# `-' `-' ' ' `-' `-' ' `   ` ' ' ` `-'   '   `-' `-' `-' `-' 
+
+# f o c u s !
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# f o c u s  m o v e
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# s p l i t  `a | b`
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# c h a n g e  l a y o u t
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# f l o a t ?
+#bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
+floating_modifier $mod
+
+# f o c u s  t i l e / f l o a t
+bindsym $mod+space focus mode_toggle
+
+
+
+# . . . .-. .-. . . .-. .-. .-. .-. .-. .-. 
+# | | | | | |(  |<  `-. |-' |-| |   |-  `-. 
+# `.'.' `-' ' ' ' ` `-' '   ` ' `-' `-' `-' 
+
+# s e t  w o r k s p a c e  v a r i a b l e s
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# s w i t c h  w o r k s p a c e s
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# m o v e  c o n t a i n e r
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# S e t  g a p s
+gaps inner 10
+gaps outer 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+#smart_gaps on
+
+# S m a r t  b o r d e r s 
+# on|no_gaps
+#smart_borders on
+
+# $m o d + S h i f t + g  f o r  g a p  e d i t 
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# R o u n d  b u l l s h i t
+smart_borders on
+smart_borders no_gaps
+border_radius 4
+
+# .-. . . .-. .-. .-. .  .   .-. . . .-. .-. 
+# `-.  |  `-.  |  |-  |\/|   `-. |-|  |   |  
+# `-'  `  `-'  '  `-' '  `   `-' ' ` `-'  '  
+
+# O n  S t a r t
+exec feh --no-startup-id feh --bg-scale ~/Downloads/wallpapers/samsung-galaxy-s21-3840x2160-abstract-unpacked-2021-samsungevent-4k-23257.jpg
+exec compton --no-startup-id
+
+
+# S h o r t c u t s
+bindsym $mod+Return exec kitty
+bindsym $mod+Shift+q kill
+bindsym $mod+p exec ~/.config/polybar/launch.sh --blocks
+bindsym $mod+Shift+p exec "killall -q polybar"
+bindsym Print exec flameshot gui
+
+# r o f i
+bindsym $mod+d exec rofi -show
+bindsym $mod+Shift+d exec rofi -show run
+bindsym $mod+Shift+Return exec rofi -show drun
+
+# R R R E
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -B 'Exit i3' 'i3-msg exit'"
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# M O D S ?
+set $mod Mod4
+set $alt Mod1
+
+# M i s c
+default_border pixel 0
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
